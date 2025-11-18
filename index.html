@@ -233,12 +233,12 @@
         <h2>Drag the Slider to Compare Details</h2>
         <img-comparison-slider>
           <figure slot="first" class="image-container svg-container">
-            <img src="Desktop grids.svg" alt="SVG Version" />
-            <figcaption>SVG (226 KB)</figcaption>
+            <img src="Grid.svg" alt="SVG Version" />
+            <figcaption>SVG (253 KB)</figcaption>
           </figure>
           <figure slot="second" class="image-container">
-            <img src="Desktop grids.webp" alt="WebP Version" />
-            <figcaption>WebP (202 KB)</figcaption>
+            <img src="Grid.webp" alt="WebP Version" />
+            <figcaption>WebP (156 KB)</figcaption>
           </figure>
         </img-comparison-slider>
       </div>
@@ -249,33 +249,32 @@
           SVG and WebP formats
         </p>
         <p>
-          <strong>Files:</strong> Desktop grids.svg (226 KB) vs Desktop
-          grids.webp (202 KB)
+          <strong>Files:</strong> Grid.svg (253 KB) vs Grid.webp (156 KB)
         </p>
       </div>
 
       <div class="stats">
         <div class="stat-card svg">
           <h3>SVG Format</h3>
-          <div class="size">226 KB</div>
+          <div class="size">253 KB</div>
           <p>Vector Graphics</p>
           <p>Infinite Scaling</p>
-          <p>1,669 XML Lines</p>
+          <p>Complex XML</p>
         </div>
         <div class="stat-card webp">
           <h3>WebP Format</h3>
-          <div class="size">202 KB</div>
+          <div class="size">156 KB</div>
           <p>Raster Graphics</p>
           <p>GPU Accelerated</p>
-          <p>11% Smaller</p>
+          <p>38% Smaller</p>
         </div>
       </div>
 
       <div class="instructions">
         <p><strong>Instructions:</strong></p>
         <p>• Drag the center slider left/right to compare image details</p>
-        <p>• Left side shows SVG format (226 KB)</p>
-        <p>• Right side shows WebP format (202 KB)</p>
+        <p>• Left side shows SVG format (253 KB)</p>
+        <p>• Right side shows WebP format (156 KB)</p>
         <p>• Zoom in your browser to inspect fine details</p>
         <p>
           • Both images have white background to prevent transparency color
@@ -287,11 +286,10 @@
         <p><strong>Key Observations:</strong></p>
         <p>• SVG maintains sharpness when scaled (vector nature)</p>
         <p>• WebP provides comparable visual quality at original size</p>
-        <p>• WebP file size is 11% smaller than SVG (226 KB vs 202 KB)</p>
+        <p>• <strong>WebP file size is 38% smaller than SVG (253 KB vs 156 KB)</strong></p>
         <p>• WebP uses GPU hardware acceleration, SVG uses CPU</p>
         <p>
-          • SVG contains 256 color matrices, 171 blend modes, 127 blurs -
-          causing bloat
+          • SVG contains complex filters and effects - causing significant bloat
         </p>
       </div>
 
@@ -399,26 +397,26 @@
           </thead>
           <tbody>
             <tr>
-              <td><code>grid.webp</code></td>
-              <td><strong>90 KB</strong></td>
+              <td><code>Grid.webp</code></td>
+              <td><strong>156 KB</strong></td>
               <td>Raster (WebP)</td>
               <td>Baseline</td>
             </tr>
             <tr>
-              <td><code>Desktop grids.svg</code></td>
-              <td><strong>226 KB</strong></td>
+              <td><code>Grid.svg</code></td>
+              <td><strong>253 KB</strong></td>
               <td>Vector (SVG)</td>
-              <td><strong>+151% larger</strong></td>
+              <td><strong>+62% larger</strong></td>
             </tr>
           </tbody>
         </table>
 
         <div class="highlight-box">
-          <strong>Result:</strong> WebP is 60% smaller (136 KB savings) compared to grid.webp baseline
+          <strong>Result:</strong> WebP is 38% smaller (97 KB savings) - SVG is 1.6x larger
         </div>
 
         <h3>SVG Complexity Analysis</h3>
-        <p>Analysis of <code>Desktop grids.svg</code> reveals extreme complexity:</p>
+        <p>Analysis of <code>Grid.svg</code> reveals extreme complexity:</p>
 
         <table>
           <thead>
@@ -492,20 +490,20 @@
           <thead>
             <tr>
               <th>Metric</th>
-              <th>grid.webp (90 KB)</th>
-              <th>Desktop grids.svg (226 KB)</th>
+              <th>Grid.webp (156 KB)</th>
+              <th>Grid.svg (253 KB)</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td><strong>Download Time</strong></td>
               <td>Baseline</td>
-              <td>2.5x slower</td>
+              <td>1.6x slower</td>
             </tr>
             <tr>
               <td><strong>Parsing Time</strong></td>
               <td>Instant binary decode</td>
-              <td>Parse 1,669 lines of XML</td>
+              <td>Parse complex XML structure</td>
             </tr>
             <tr>
               <td><strong>Rendering Method</strong></td>
@@ -515,7 +513,7 @@
             <tr>
               <td><strong>Memory Usage</strong></td>
               <td>Low (single texture)</td>
-              <td>High (DOM tree + 500 elements)</td>
+              <td>High (DOM tree + complex elements)</td>
             </tr>
             <tr>
               <td><strong>Browser Optimization</strong></td>
@@ -549,7 +547,7 @@
 
         <div class="highlight-box">
           <strong>Recommendation:</strong> For complex UI mockups, design previews, or graphics with extensive effects,
-          <strong>use WebP for 60% file size savings and significantly better rendering performance</strong>.
+          <strong>use WebP for 38% file size savings and significantly better rendering performance</strong>.
         </div>
 
         <h2>Figma Effects to Avoid with SVG</h2>

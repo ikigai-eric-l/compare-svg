@@ -84,35 +84,35 @@ A practical comparison between two versions of the same grid design:
 
 | File | Size | Format | Size Difference |
 |------|------|--------|-----------------|
-| `grid.webp` | **90 KB** | Raster (WebP) | Baseline |
-| `Desktop grids.svg` | **226 KB** | Vector (SVG) | **+151% larger** |
+| `Grid.webp` | **156 KB** | Raster (WebP) | Baseline |
+| `Grid.svg` | **253 KB** | Vector (SVG) | **+62% larger** |
 
-**Result: WebP is 60% smaller (136 KB savings)**
+**Result: WebP is 38% smaller (97 KB savings) - SVG is 1.6x larger**
 
 ### SVG Complexity Analysis
 
-Analysis of `Desktop grids.svg` reveals extreme complexity:
+Analysis of `Grid.svg` reveals extreme complexity:
 
 ```mermaid
 graph LR
-    A[Desktop grids.svg<br/>226 KB] --> B[1,669 Lines<br/>of XML]
+    A[Grid.svg<br/>253 KB] --> B[Complex<br/>XML Structure]
 
     B --> C[Filter<br/>Effects]
     B --> D[Gradients &<br/>Colors]
     B --> E[Structural<br/>Elements]
 
-    C --> C1[256 Color<br/>Matrices]
-    C --> C2[171 Blend<br/>Modes]
-    C --> C3[127 Gaussian<br/>Blurs]
-    C --> C4[128 Offset<br/>Effects]
+    C --> C1[Multiple Color<br/>Matrices]
+    C --> C2[Blend<br/>Modes]
+    C --> C3[Gaussian<br/>Blurs]
+    C --> C4[Offset<br/>Effects]
 
-    D --> D1[66 Linear<br/>Gradients]
-    D --> D2[140 Gradient<br/>Stops]
+    D --> D1[Linear<br/>Gradients]
+    D --> D2[Multiple Gradient<br/>Stops]
 
-    E --> E1[178<br/>Rectangles]
-    E --> E2[96<br/>Paths]
-    E --> E3[47 Clip<br/>Paths]
-    E --> E4[3<br/>Masks]
+    E --> E1[Multiple<br/>Rectangles]
+    E --> E2[Complex<br/>Paths]
+    E --> E3[Clip<br/>Paths]
+    E --> E4[Masks]
 
     style A fill:#FFB6C6
     style C1 fill:#FFE4B5
@@ -123,13 +123,14 @@ graph LR
 
 **Complexity Breakdown:**
 
-| Category | Count | Impact |
-|----------|-------|--------|
-| Total Lines | 1,669 | Large XML parsing overhead |
-| Filter Effects | 256 color matrices + 171 blends | Heavy CPU processing |
-| Gradients | 66 linear gradients + 140 stops | Complex rendering calculations |
-| Clipping/Masking | 47 clip paths + 3 masks | Additional rendering passes |
-| Total Elements | ~500 SVG elements | Deep DOM tree |
+| Category | Impact |
+|----------|--------|
+| File Size | 253 KB - 4x larger than WebP |
+| XML Structure | Large XML parsing overhead |
+| Filter Effects | Heavy CPU processing for color matrices and blends |
+| Gradients | Complex rendering calculations with multiple stops |
+| Clipping/Masking | Additional rendering passes |
+| DOM Elements | Deep DOM tree with many elements |
 
 ### Why SVG Became Larger: Web Research Evidence
 
@@ -154,12 +155,12 @@ graph LR
 
 ### Performance Impact Comparison
 
-| Metric | grid.webp (90 KB) | Desktop grids.svg (226 KB) |
-|--------|-------------------|----------------------------|
-| **Download Time** | Baseline | 2.5x slower |
-| **Parsing Time** | Instant binary decode | Parse 1,669 lines of XML |
+| Metric | Grid.webp (156 KB) | Grid.svg (253 KB) |
+|--------|---------------------|-------------------|
+| **Download Time** | Baseline | 1.6x slower |
+| **Parsing Time** | Instant binary decode | Parse complex XML structure |
 | **Rendering Method** | GPU hardware-accelerated | CPU rasterization (no GPU) |
-| **Memory Usage** | Low (single texture) | High (DOM tree + 500 elements) |
+| **Memory Usage** | Low (single texture) | High (DOM tree + many elements) |
 | **Browser Optimization** | Optimized decoder routines | Limited SVG optimization |
 
 ### When "SVG is Lightweight" Myth Fails
@@ -171,13 +172,13 @@ The assumption that "SVG is lightweight and performant" **only applies to**:
 - ✅ No complex filter effects
 
 **This case study demonstrates SVG bloat when:**
-- ❌ 256+ filter effects (blur, blend, offset)
-- ❌ 66 complex gradients with 140 color stops
-- ❌ Nearly 500 SVG elements
-- ❌ 1,669 lines of XML code
+- ❌ Multiple filter effects (blur, blend, offset)
+- ❌ Complex gradients with many color stops
+- ❌ Many SVG elements creating deep DOM trees
+- ❌ Large XML code structure
 - ❌ Multiple masks and clipping paths
 
-**Recommendation**: For complex UI mockups, design previews, or graphics with extensive effects, **use WebP for 60% file size savings and significantly better rendering performance**.
+**Recommendation**: For complex UI mockups, design previews, or graphics with extensive effects, **use WebP for 38% file size savings and significantly better rendering performance**.
 
 ## Figma Effects to Avoid with SVG
 
