@@ -94,29 +94,31 @@ A practical comparison between two versions of the same grid design:
 Analysis of `Desktop grids.svg` reveals extreme complexity:
 
 ```mermaid
-graph TD
-    A[Desktop grids.svg<br/>226 KB] --> B[1,669 Lines of XML]
-    B --> C[Filter Effects]
-    B --> D[Gradients & Colors]
-    B --> E[Structural Elements]
+graph LR
+    A[Desktop grids.svg<br/>226 KB] --> B[1,669 Lines<br/>of XML]
 
-    C --> C1[256 Color Matrices]
-    C --> C2[171 Blend Modes]
-    C --> C3[127 Gaussian Blurs]
-    C --> C4[128 Offset Effects]
+    B --> C[Filter<br/>Effects]
+    B --> D[Gradients &<br/>Colors]
+    B --> E[Structural<br/>Elements]
 
-    D --> D1[66 Linear Gradients]
-    D --> D2[140 Gradient Stops]
+    C --> C1[256 Color<br/>Matrices]
+    C --> C2[171 Blend<br/>Modes]
+    C --> C3[127 Gaussian<br/>Blurs]
+    C --> C4[128 Offset<br/>Effects]
 
-    E --> E1[178 Rectangles]
-    E --> E2[96 Paths]
-    E --> E3[47 Clip Paths]
-    E --> E4[3 Masks]
+    D --> D1[66 Linear<br/>Gradients]
+    D --> D2[140 Gradient<br/>Stops]
+
+    E --> E1[178<br/>Rectangles]
+    E --> E2[96<br/>Paths]
+    E --> E3[47 Clip<br/>Paths]
+    E --> E4[3<br/>Masks]
 
     style A fill:#FFB6C6
     style C1 fill:#FFE4B5
     style C2 fill:#FFE4B5
     style C3 fill:#FFE4B5
+    style C4 fill:#FFE4B5
 ```
 
 **Complexity Breakdown:**
