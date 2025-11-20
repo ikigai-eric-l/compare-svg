@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG 比較 - 原始 vs 簡化版</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+            background: #1a1a1a;
+            color: #fff;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .stat-card h3 {
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0.8;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #4ade80;
+        }
+
+        .reduction {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            max-width: 1800px;
+            margin: 0 auto;
+        }
+
+        .panel {
+            background: #2a2a2a;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .panel-header {
+            background: #333;
+            padding: 1rem 1.5rem;
+            border-bottom: 2px solid #444;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .panel-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .file-size {
+            font-size: 0.875rem;
+            color: #4ade80;
+            background: rgba(74, 222, 128, 0.1);
+            padding: 0.25rem 0.75rem;
+            border-radius: 6px;
+        }
+
+        .preview {
+            padding: 2rem;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 300px;
+        }
+
+        .preview svg {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .code-section {
+            position: relative;
+        }
+
+        .code-header {
+            padding: 1rem 1.5rem;
+            background: #1a1a1a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #444;
+        }
+
+        .code-title {
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            opacity: 0.8;
+        }
+
+        .copy-btn {
+            background: #4ade80;
+            color: #1a1a1a;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .copy-btn:hover {
+            background: #22c55e;
+            transform: translateY(-2px);
+        }
+
+        .copy-btn:active {
+            transform: translateY(0);
+        }
+
+        pre {
+            margin: 0;
+            padding: 1.5rem;
+            background: #1a1a1a;
+            overflow-x: auto;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        code {
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Courier New', monospace;
+            font-size: 0.875rem;
+            line-height: 1.6;
+            color: #e5e7eb;
+        }
+
+        @media (max-width: 1200px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .highlight-diff {
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.7;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>SVG 比較工具</h1>
+        <p>比較原始 SVG 與簡化版本的差異</p>
+    </div>
+
+    <div class="stats">
+        <div class="stat-card">
+            <h3>原始檔案</h3>
+            <div class="stat-value" id="originalSize">-</div>
+        </div>
+        <div class="stat-card">
+            <h3>簡化版本</h3>
+            <div class="stat-value" id="simplifiedSize">-</div>
+        </div>
+        <div class="stat-card reduction">
+            <h3>減少大小</h3>
+            <div class="stat-value" id="reduction">-</div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Original SVG -->
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">原始 SVG</div>
+                <div class="file-size" id="originalBytes">-</div>
+            </div>
+            <div class="preview" id="originalPreview">
+                載入中...
+            </div>
+            <div class="code-section">
+                <div class="code-header">
+                    <div class="code-title">原始碼</div>
+                    <button class="copy-btn" onclick="copyCode('originalCode')">複製</button>
+                </div>
+                <pre><code id="originalCode">載入中...</code></pre>
+            </div>
+        </div>
+
+        <!-- Simplified SVG -->
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">簡化版 SVG</div>
+                <div class="file-size" id="simplifiedBytes">-</div>
+            </div>
+            <div class="preview" id="simplifiedPreview">
+                載入中...
+            </div>
+            <div class="code-section">
+                <div class="code-header">
+                    <div class="code-title">原始碼</div>
+                    <button class="copy-btn" onclick="copyCode('simplifiedCode')">複製</button>
+                </div>
+                <pre><code id="simplifiedCode">載入中...</code></pre>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function formatBytes(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+
+        async function loadSVG(url, previewId, codeId) {
+            try {
+                const response = await fetch(url);
+                const text = await response.text();
+
+                // Display preview
+                document.getElementById(previewId).innerHTML = text;
+
+                // Display code with syntax highlighting
+                const codeElement = document.getElementById(codeId);
+                codeElement.textContent = text;
+
+                return new Blob([text]).size;
+            } catch (error) {
+                console.error('Error loading SVG:', error);
+                return 0;
+            }
+        }
+
+        async function init() {
+            const originalSize = await loadSVG('grid.svg', 'originalPreview', 'originalCode');
+            const simplifiedSize = await loadSVG('grid-simplified.svg', 'simplifiedPreview', 'simplifiedCode');
+
+            const reduction = ((originalSize - simplifiedSize) / originalSize * 100).toFixed(1);
+
+            document.getElementById('originalSize').textContent = formatBytes(originalSize);
+            document.getElementById('simplifiedSize').textContent = formatBytes(simplifiedSize);
+            document.getElementById('reduction').textContent = reduction + '%';
+
+            document.getElementById('originalBytes').textContent = `${formatBytes(originalSize)} (${originalSize.toLocaleString()} bytes)`;
+            document.getElementById('simplifiedBytes').textContent = `${formatBytes(simplifiedSize)} (${simplifiedSize.toLocaleString()} bytes)`;
+        }
+
+        function copyCode(elementId) {
+            const code = document.getElementById(elementId).textContent;
+            navigator.clipboard.writeText(code).then(() => {
+                const btn = event.target;
+                const originalText = btn.textContent;
+                btn.textContent = '已複製!';
+                btn.style.background = '#22c55e';
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.style.background = '#4ade80';
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy:', err);
+            });
+        }
+
+        // Initialize on page load
+        init();
+    </script>
+</body>
+</html>

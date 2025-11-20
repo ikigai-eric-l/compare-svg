@@ -1,0 +1,74 @@
+<svg class="ScalableGridSvgSC_sr6r5bq"><svg preserveAspectRatio="none" viewBox="0 0 346 352"
+    class="BettingGridSvgSC_b1u7kdao">
+    <g>
+      <rect x="0" y="0" width="85" height="32" class="bet gridMinimized" data-betspot="SMALL_4_10"></rect>
+      <rect x="87" y="0" width="85" height="32" class="bet gridMinimized" data-betspot="ODD"></rect>
+      <rect x="174" y="0" width="85" height="32" class="bet gridMinimized" data-betspot="EVEN"></rect>
+      <rect x="261" y="0" width="85" height="32" class="bet gridMinimized" data-betspot="BIG_11_17"></rect>
+      <rect x="0" y="34" width="56" height="32" class="bet gridMinimized" data-betspot="DOUBLE_1"></rect>
+      <rect x="58" y="34" width="56" height="32" class="bet gridMinimized" data-betspot="DOUBLE_2"></rect>
+      <rect x="116" y="34" width="56" height="32" class="bet gridMinimized" data-betspot="DOUBLE_3"></rect>
+      <rect x="174" y="34" width="56" height="32" class="bet gridMinimized" data-betspot="DOUBLE_4"></rect>
+      <rect x="232" y="34" width="56" height="32" class="bet gridMinimized" data-betspot="DOUBLE_5"></rect>
+      <rect x="290" y="34" width="56" height="32" class="bet gridMinimized" data-betspot="DOUBLE_6"></rect>
+      <rect x="0" y="68" width="44" height="80" class="bet gridMinimized" data-betspot="TRIPLE_1"></rect>
+      <rect x="46" y="68" width="44" height="80" class="bet gridMinimized" data-betspot="TRIPLE_2"></rect>
+      <rect x="92" y="68" width="44" height="80" class="bet gridMinimized" data-betspot="TRIPLE_3"></rect>
+      <rect x="138" y="68" width="70" height="80" class="bet gridMinimized" data-betspot="ANY_TRIPLE"></rect>
+      <rect x="210" y="68" width="44" height="80" class="bet gridMinimized" data-betspot="TRIPLE_4"></rect>
+      <rect x="256" y="68" width="44" height="80" class="bet gridMinimized" data-betspot="TRIPLE_5"></rect>
+      <rect x="302" y="68" width="44" height="80" class="bet gridMinimized" data-betspot="TRIPLE_6"></rect>
+      <rect x="0" y="150" width="47.714285714285715" height="32" class="bet gridMinimized" data-betspot="TOTAL_4">
+      </rect>
+      <rect x="49.714285714285715" y="150" width="47.714285714285715" height="32" class="bet gridMinimized"
+        data-betspot="TOTAL_5"></rect>
+      <rect x="99.42857142857143" y="150" width="47.714285714285715" height="32" class="bet gridMinimized"
+        data-betspot="TOTAL_6"></rect>
+      <rect x="149.14285714285714" y="150" width="47.714285714285715" height="32" class="bet gridMinimized"
+        data-betspot="TOTAL_7"></rect>
+      <rect x="198.85714285714286" y="150" width="47.714285714285715" height="32" class="bet gridMinimized"
+        data-betspot="TOTAL_8"></rect>
+      <rect x="248.57142857142858" y="150" width="47.714285714285715" height="32" class="bet gridMinimized"
+        data-betspot="TOTAL_9"></rect>
+      <rect x="298.2857142857143" y="150" width="47.714285714285715" height="32" class="bet gridMinimized"
+        data-betspot="TOTAL_10"></rect>
+      <rect x="0" y="184" width="47.714285714285715" height="32" class="bet gridMinimized" data-betspot="TOTAL_11">
+      </rect>
+      <rect x="49.714285714285715" y="184" width="47.714285714285715" height="32" class="bet gridMinimized"
+        data-betspot="TOTAL_12"></rect>
+      <rect x="99.42857142857143" y="184" width="47.714285714285715" height="32" class="bet gridMinimized"
+        data-betspot="TOTAL_13"></rect>
+      <rect x="149.14285714285714" y="184" width="47.714285714285715" height="32" class="bet gridMinimized"
+        data-betspot="TOTAL_14"></rect>
+      <rect x="198.85714285714286" y="184" width="47.714285714285715" height="32" class="bet gridMinimized"
+        data-betspot="TOTAL_15"></rect>
+      <rect x="248.57142857142858" y="184" width="47.714285714285715" height="32" class="bet gridMinimized"
+        data-betspot="TOTAL_16"></rect>
+      <rect x="298.2857142857143" y="184" width="47.714285714285715" height="32" class="bet gridMinimized"
+        data-betspot="TOTAL_17"></rect>
+      <rect x="0" y="218" width="67.6" height="32" class="bet gridMinimized" data-betspot="DOMINO_1_2"></rect>
+      <rect x="69.6" y="218" width="67.6" height="32" class="bet gridMinimized" data-betspot="DOMINO_1_3"></rect>
+      <rect x="139.2" y="218" width="67.6" height="32" class="bet gridMinimized" data-betspot="DOMINO_1_4"></rect>
+      <rect x="208.79999999999998" y="218" width="67.6" height="32" class="bet gridMinimized" data-betspot="DOMINO_1_5">
+      </rect>
+      <rect x="278.4" y="218" width="67.6" height="32" class="bet gridMinimized" data-betspot="DOMINO_1_6"></rect>
+      <rect x="0" y="252" width="67.6" height="32" class="bet gridMinimized" data-betspot="DOMINO_2_3"></rect>
+      <rect x="69.6" y="252" width="67.6" height="32" class="bet gridMinimized" data-betspot="DOMINO_2_4"></rect>
+      <rect x="139.2" y="252" width="67.6" height="32" class="bet gridMinimized" data-betspot="DOMINO_2_5"></rect>
+      <rect x="208.79999999999998" y="252" width="67.6" height="32" class="bet gridMinimized" data-betspot="DOMINO_2_6">
+      </rect>
+      <rect x="278.4" y="252" width="67.6" height="32" class="bet gridMinimized" data-betspot="DOMINO_3_4"></rect>
+      <rect x="0" y="286" width="67.6" height="32" class="bet gridMinimized" data-betspot="DOMINO_3_5"></rect>
+      <rect x="69.6" y="286" width="67.6" height="32" class="bet gridMinimized" data-betspot="DOMINO_3_6"></rect>
+      <rect x="139.2" y="286" width="67.6" height="32" class="bet gridMinimized" data-betspot="DOMINO_4_5"></rect>
+      <rect x="208.79999999999998" y="286" width="67.6" height="32" class="bet gridMinimized" data-betspot="DOMINO_4_6">
+      </rect>
+      <rect x="278.4" y="286" width="67.6" height="32" class="bet gridMinimized" data-betspot="DOMINO_5_6"></rect>
+      <rect x="0" y="320" width="56" height="32" class="bet gridMinimized" data-betspot="SINGLE_1"></rect>
+      <rect x="58" y="320" width="56" height="32" class="bet gridMinimized" data-betspot="SINGLE_2"></rect>
+      <rect x="116" y="320" width="56" height="32" class="bet gridMinimized" data-betspot="SINGLE_3"></rect>
+      <rect x="174" y="320" width="56" height="32" class="bet gridMinimized" data-betspot="SINGLE_4"></rect>
+      <rect x="232" y="320" width="56" height="32" class="bet gridMinimized" data-betspot="SINGLE_5"></rect>
+      <rect x="290" y="320" width="56" height="32" class="bet gridMinimized" data-betspot="SINGLE_6"></rect>
+    </g>
+  </svg></svg>
