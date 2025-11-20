@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technology Comparison - Radar Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.js"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 2em;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 1.1em;
+        }
+        .chart-container {
+            position: relative;
+            height: 500px;
+            margin-bottom: 30px;
+        }
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 20px;
+            background: #f8f9fa;
+            border-radius: 20px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            user-select: none;
+        }
+        .legend-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        .legend-item.inactive {
+            opacity: 0.4;
+            background: #e9ecef;
+        }
+        .legend-item.inactive:hover {
+            opacity: 0.6;
+        }
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+        }
+        .use-cases {
+            margin-top: 40px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        .use-cases h2 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+        .use-case {
+            margin: 10px 0;
+            padding: 10px;
+            border-left: 4px solid;
+        }
+        .use-case.svg {
+            border-color: rgba(255, 99, 132, 0.8);
+            background: rgba(255, 99, 132, 0.05);
+        }
+        .use-case.webp {
+            border-color: rgba(54, 162, 235, 0.8);
+            background: rgba(54, 162, 235, 0.05);
+        }
+        .use-case.canvas {
+            border-color: rgba(255, 206, 86, 0.8);
+            background: rgba(255, 206, 86, 0.05);
+        }
+        .use-case.png {
+            border-color: rgba(75, 192, 192, 0.8);
+            background: rgba(75, 192, 192, 0.05);
+        }
+        .use-case strong {
+            font-size: 1.1em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 Technology Comparison</h1>
+        <p class="subtitle">SVG vs WebP vs Canvas vs PNG - Performance Metrics</p>
+
+        <div class="chart-container">
+            <canvas id="radarChart"></canvas>
+        </div>
+
+        <div class="legend">
+            <div class="legend-item" data-index="0" onclick="toggleDataset(0)">
+                <div class="legend-color" style="background: rgba(255, 99, 132, 0.8);"></div>
+                <span>SVG</span>
+            </div>
+            <div class="legend-item" data-index="1" onclick="toggleDataset(1)">
+                <div class="legend-color" style="background: rgba(54, 162, 235, 0.8);"></div>
+                <span>WebP</span>
+            </div>
+            <div class="legend-item" data-index="2" onclick="toggleDataset(2)">
+                <div class="legend-color" style="background: rgba(255, 206, 86, 0.8);"></div>
+                <span>Canvas</span>
+            </div>
+            <div class="legend-item" data-index="3" onclick="toggleDataset(3)">
+                <div class="legend-color" style="background: rgba(75, 192, 192, 0.8);"></div>
+                <span>PNG</span>
+            </div>
+        </div>
+
+        <div class="use-cases">
+            <h2>📋 Best Use Cases</h2>
+            <div class="use-case svg">
+                <strong>SVG:</strong> Small Interactive Elements
+            </div>
+            <div class="use-case webp">
+                <strong>WebP:</strong> ✅ Complex Gradient Backgrounds
+            </div>
+            <div class="use-case canvas">
+                <strong>Canvas:</strong> Particle/Light Effects
+            </div>
+            <div class="use-case png">
+                <strong>PNG:</strong> High-Quality Static Images
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const ctx = document.getElementById('radarChart').getContext('2d');
+        let chart;
+
+        const data = {
+            labels: ['📦 Size', '⚡ Performance', '🎨 Sharpness', '🔧 Scalability'],
+            datasets: [
+                {
+                    label: 'SVG',
+                    data: [3, 2, 5, 5],
+                    fill: true,
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgba(255, 99, 132, 0.8)',
+                    borderWidth: 2,
+                    pointBackgroundColor: 'rgba(255, 99, 132, 0.8)',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: 'rgba(255, 99, 132, 1)',
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+                {
+                    label: 'WebP',
+                    data: [5, 5, 5, 2],
+                    fill: true,
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 0.8)',
+                    borderWidth: 2,
+                    pointBackgroundColor: 'rgba(54, 162, 235, 0.8)',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: 'rgba(54, 162, 235, 1)',
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+                {
+                    label: 'Canvas',
+                    data: [4, 3, 4, 5],
+                    fill: true,
+                    backgroundColor: 'rgba(255, 206, 86, 0.2)',
+                    borderColor: 'rgba(255, 206, 86, 0.8)',
+                    borderWidth: 2,
+                    pointBackgroundColor: 'rgba(255, 206, 86, 0.8)',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: 'rgba(255, 206, 86, 1)',
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+                {
+                    label: 'PNG',
+                    data: [2, 3, 5, 2],
+                    fill: true,
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 0.8)',
+                    borderWidth: 2,
+                    pointBackgroundColor: 'rgba(75, 192, 192, 0.8)',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: 'rgba(75, 192, 192, 1)',
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                }
+            ]
+        };
+
+        const config = {
+            type: 'radar',
+            data: data,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    r: {
+                        beginAtZero: true,
+                        max: 5,
+                        min: 0,
+                        ticks: {
+                            stepSize: 1,
+                            font: {
+                                size: 12
+                            },
+                            backdropColor: 'transparent'
+                        },
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.1)'
+                        },
+                        angleLines: {
+                            color: 'rgba(0, 0, 0, 0.1)'
+                        },
+                        pointLabels: {
+                            font: {
+                                size: 14,
+                                weight: 'bold'
+                            },
+                            color: '#333'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                        padding: 12,
+                        titleFont: {
+                            size: 14,
+                            weight: 'bold'
+                        },
+                        bodyFont: {
+                            size: 13
+                        },
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                const stars = '⭐'.repeat(context.parsed.r);
+                                label += stars + ' (' + context.parsed.r + '/5)';
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        };
+
+        chart = new Chart(ctx, config);
+
+        function toggleDataset(index) {
+            const legendItem = document.querySelector(`.legend-item[data-index="${index}"]`);
+            const meta = chart.getDatasetMeta(index);
+
+            // Toggle visibility
+            meta.hidden = !meta.hidden;
+
+            // Toggle visual state
+            if (meta.hidden) {
+                legendItem.classList.add('inactive');
+            } else {
+                legendItem.classList.remove('inactive');
+            }
+
+            // Update chart
+            chart.update();
+        }
+    </script>
+</body>
+</html>
